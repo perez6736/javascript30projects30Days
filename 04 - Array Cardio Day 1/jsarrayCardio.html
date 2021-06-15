@@ -35,22 +35,51 @@
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
     
-    // Array.prototype.filter()
+    // Array.prototype.filter() - loops through array and creates new array with elements of original array that pass a boolean statment. 
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const bornIn1500s = inventors.filter(inventor => inventor.year >1499 && inventor.year <1600);
+    //console.table(bornIn1500s)
 
-    // Array.prototype.map()
+    // Array.prototype.map() - contructs new array of same length of oringal array. transform array 
     // 2. Give us an array of the inventors first and last names
+    const firstAndLast = inventors.map(inventor => `${inventor.first}  ${inventor.last}`);
+    //console.log(firstAndLast)
 
-    // Array.prototype.sort()
+    // Array.prototype.sort() - mutates orginal array and sorts in order
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const sortedArr = inventors.sort((a, b) => {
+      if(a.year > b.year){
+        return 1;
+      } else return -1
+    });
+    //console.log(sortedArr);
 
-    // Array.prototype.reduce()
+    // Array.prototype.reduce() - takes an array and reduces it to a single value or somehting smaller. doesnt change original array. 
     // 4. How many years did all the inventors live all together?
+    const totoalAge = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year)
+    },0)
+    //console.log(totoalAge);
 
     // 5. Sort the inventors by years lived
+    const yearsLivedOrder = inventors.sort((a, b) => {
+      let aAge = a.passed - a.year
+      let bAge = b.passed - b.year
+      return aAge > bAge ? -1 : 1
+    });
+    //bonus map to double check the sort. 
+    console.log(yearsLivedOrder.map(inventor => {
+      return (inventor.passed - inventor.year)
+    }));
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // const container = document.querySelector(".mw-category");
+    // const road = Array.from(container.querySelectorAll("a"))
+
+    // const de = road
+    // .map((blvd) => blvd.textContent)
+    // .filter(streetName => streetName.includes(" de ") || streetName.includes("-de-"))
 
 
     // 7. sort Exercise
