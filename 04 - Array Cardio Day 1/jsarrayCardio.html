@@ -68,9 +68,9 @@
       return aAge > bAge ? -1 : 1
     });
     //bonus map to double check the sort. 
-    console.log(yearsLivedOrder.map(inventor => {
-      return (inventor.passed - inventor.year)
-    }));
+    // console.log(yearsLivedOrder.map(inventor => {
+    //   return (inventor.passed - inventor.year)
+    // }));
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -84,10 +84,30 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const Alphapeople = people.sort((a,b) => {
+      let anames = a.split(", ")
+      let bnames = b.split(", ")
+      let aLastName = anames[0]
+      let bLastName = bnames[0]
+      return aLastName > bLastName ? 1 : -1
+    })
+    // console.log(Alphapeople)
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', "newitem" ];
+
+    const countTheArray = data.reduce((obj, element) => {
+      if(!obj[element]){
+        obj[element] = 0;
+      }
+      obj[element] ++
+      return obj // need to return the obj... not the count (idk why i tried that. )
+    },{})
+
+  //console.log(countTheArray);
+
 
   </script>
 </body>
